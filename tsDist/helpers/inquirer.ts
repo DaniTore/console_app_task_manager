@@ -1,5 +1,4 @@
-import { resolve } from 'path';
-require('colors.ts')
+const colors = require('colors')
 const inquirer = require('inquirer');
 
 const preguntas:object[] = [
@@ -44,9 +43,9 @@ const inquireMenu = async(): Promise<object[]> => {
 
     console.clear();
 
-    console.log(`================================`.green);
-    console.log(`     Seleccione una opcion      `.red);
-    console.log(`================================\n`.green);
+    console.log(colors.green(`================================`));
+    console.log(colors.red(`     Seleccione una opcion      `));
+    console.log(colors.green(`================================\n`));
 
     const {option} = await inquirer.prompt(preguntas);
 
@@ -60,7 +59,7 @@ const pausa = async(): Promise<any> => {
         {
             type: 'input',
             name: 'enter',
-            message: `Pulse ${'ENTER'.blue} para continuar\n`
+            message: `Pulse ${colors.blue('ENTER')} para continuar\n`
         }
     ]
     console.log('\n');

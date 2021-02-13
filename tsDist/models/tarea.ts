@@ -1,14 +1,17 @@
-import { Module } from "module";
+const { v4: uuidv4 } = require('uuid')
+
 
 class Tarea {
-    id = '';
+    id:string = '';
     desc: string = '';
-    completado = null;
+    completadoFecha = null;
 
     constructor( desc: string) {
-        this.desc = desc
+        this.id = uuidv4();
+        this.desc = desc;
+        this.completadoFecha = null;
     }
 
 }
 
-module.exports = Tarea
+export = Tarea

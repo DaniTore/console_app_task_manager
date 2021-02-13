@@ -1,12 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.pause = exports.mostrarMenu = void 0;
+import { resolve } from 'path';
+import Colors = require('colors.ts')
+
 const mostrarMenu = () => {
-    return new Promise(resolve => {
+
+    return new Promise( resolve => {
+
         console.clear();
+
         console.log(`================================`.green);
         console.log(`     Seleccione una opcion      `.red);
         console.log(`================================\n`.green);
+
         console.log(` ${'1'.green} Crear tareas`);
         console.log(` ${'2'.green} Listar tareas`);
         console.log(` ${'3'.green} Listar tareas completadas`);
@@ -15,27 +19,36 @@ const mostrarMenu = () => {
         console.log(` ${'6'.green} Borrar tareas`);
         console.log(` ${'7'.green} Crear tareas`);
         console.log(` ${'0'.green} SALIR\n`);
+
         const redline = require('readline').createInterface({
-            input: process.stdin,
+            input: process.stdin, 
             output: process.stdout,
         });
-        redline.question('Seleccione una opción: ', (opt) => {
+
+        redline.question('Seleccione una opción: ', (opt: String) => {
             redline.close();
             resolve(opt);
         });
+
     });
-};
-exports.mostrarMenu = mostrarMenu;
+
+}
+
 const pause = () => {
-    return new Promise(resolve => {
+
+    return new Promise<void>( resolve => {
+
         const redline = require('readline').createInterface({
-            input: process.stdin,
+            input: process.stdin, 
             output: process.stdout,
         });
-        redline.question(`\nPulse ${'ENTER'.blue} para continuar\n`, () => {
+    
+        redline.question(`\nPulse ${'ENTER'.blue} para continuar\n`, ():void => {
             redline.close();
             resolve();
-        });
-    });
-};
-exports.pause = pause;
+        })
+
+    })
+}
+
+export { mostrarMenu, pause }

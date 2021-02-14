@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require('uuid')
 
 
 class Tarea {
-    id:string = '';
+    id = '';
     desc: string = '';
     completadoFecha = null;
 

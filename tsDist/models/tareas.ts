@@ -1,5 +1,8 @@
 import Tarea from "./tarea";
 
+const inquirer = require('inquirer');
+const colors = require('colors')
+
 class Tareas {
 
     _listado: any ;
@@ -25,6 +28,25 @@ class Tareas {
 
         const tarea = new Tarea(desc);
         this._listado[tarea.id] = tarea
+
+    }
+
+    public cargarTareas( tareas: []){
+
+        tareas.forEach((tarea: { id: string | number; }): void => {
+            this._listado[tarea.id] = tarea
+        })
+
+        this._listado
+    }
+
+    public listarTareas(){
+        this.listadoArr.forEach((tarea: object, idx:number) => {
+            const index = `    ${idx + 1}. `.red;
+            const {desc, completadoFecha}: any = tarea;
+            const estado = (completadoFecha) ? 'Completado'.green : 'Pendiente'.red
+            console.log(index + desc + ' - ' + estado); 
+        })
 
     }
 }

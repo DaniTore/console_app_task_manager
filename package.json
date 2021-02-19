@@ -2,14 +2,14 @@
     "name": "03-tareas",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "dist/app.js",
     "scripts": {
         "clean": "rm -rf ./dist",
         "copy-files": "copyfiles -u 1 tsDist/db/*.json dist/",
         "build": "yarn clean && tsc && yarn copy-files",
         "start": "yarn build  && node dist/app.js",
-        "build:dev": "tsc -w ",
-        "start:dev": "nodemon dist/app.js"
+        "build:dev": "yarn clean && tsc -w && yarn copy-files ",
+        "start:dev": "yarn build:dev nodemon dist/app.js"
     },
     "keywords": [],
     "author": "",
@@ -29,7 +29,6 @@
         "copyfiles": "^2.4.1",
         "mocha": "^8.2.1",
         "mocha-junit-reporter": "^2.0.0",
-        "nodemon": "^2.0.7",
         "rimraf": "^3.0.2"
     }
 }

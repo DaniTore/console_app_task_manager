@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid')
 class Tarea {
     id = '';
     desc: string = '';
-    completadoFecha = null;
+    completadoFecha: null | string = null;
 
     constructor( desc: string) {
         this.id = uuidv4();
